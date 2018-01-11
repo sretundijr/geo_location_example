@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { MapView } from 'expo';
 
 export default class App extends React.Component {
@@ -17,10 +17,22 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <MapView
-        style={{ flex: 1 }}
-        region={this.state.region}
-      />
+      <View style={styles.container}>
+        <MapView
+          style={styles.map}
+          region={this.state.region}
+        >
+          <MapView.Marker
+            coordinate={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+            }}
+          />
+        </MapView>
+        <View style={styles.hello}>
+          <Text>Hello world</Text>
+        </View>
+      </View>
     );
   }
 }
@@ -28,8 +40,19 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
+  map: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    position: 'absolute',
+  },
+  hello: {
+    position: 'absolute',
+    bottom: 20,
+  }
 });
